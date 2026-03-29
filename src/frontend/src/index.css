@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.375rem;
+
+    /* Dark warrior palette */
+    --background: 0.09 0 0;
+    --foreground: 0.9 0.015 75;
+    --card: 0.2 0.008 180;
+    --card-foreground: 0.9 0.015 75;
+    --popover: 0.2 0.008 180;
+    --popover-foreground: 0.9 0.015 75;
+    --primary: 0.76 0.1 70;
+    --primary-foreground: 0.09 0 0;
+    --secondary: 0.155 0.008 180;
+    --secondary-foreground: 0.9 0.015 75;
+    --muted: 0.155 0.008 180;
+    --muted-foreground: 0.745 0.018 75;
+    --accent: 0.76 0.1 70;
+    --accent-foreground: 0.09 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.3 0.01 180;
+    --input: 0.3 0.01 180;
+    --ring: 0.76 0.1 70;
+    --gold: 0.76 0.1 70;
+    --gold-light: 0.89 0.08 75;
+    --gold-dark: 0.6 0.09 65;
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.155 0.008 180;
+    --sidebar-foreground: 0.9 0.015 75;
+    --sidebar-primary: 0.76 0.1 70;
+    --sidebar-primary-foreground: 0.09 0 0;
+    --sidebar-accent: 0.2 0.008 180;
+    --sidebar-accent-foreground: 0.9 0.015 75;
+    --sidebar-border: 0.3 0.01 180;
+    --sidebar-ring: 0.76 0.1 70;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .font-cinzel {
+    font-family: "Cinzel", serif;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(
+      135deg,
+      oklch(0.89 0.08 75) 0%,
+      oklch(0.76 0.1 70) 40%,
+      oklch(0.6 0.09 65) 70%,
+      oklch(0.76 0.1 70) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-border {
+    border: 1px solid oklch(0.76 0.1 70 / 0.5);
+  }
+
+  .gold-border-strong {
+    border: 1px solid oklch(0.76 0.1 70 / 0.8);
+  }
+
+  .warrior-card {
+    background: oklch(0.2 0.008 180);
+    border: 1px solid oklch(0.3 0.01 180);
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s
+      ease;
+  }
+
+  .warrior-card:hover {
+    border-color: oklch(0.76 0.1 70 / 0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px oklch(0.76 0.1 70 / 0.12);
+  }
+
+  .gold-btn {
+    background: linear-gradient(135deg, oklch(0.76 0.1 70), oklch(0.6 0.09 65));
+    color: oklch(0.09 0 0);
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .gold-btn:hover {
+    background: linear-gradient(135deg, oklch(0.89 0.08 75), oklch(0.76 0.1 70));
+    box-shadow: 0 6px 28px oklch(0.76 0.1 70 / 0.5);
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  .nav-link {
+    font-family: "Cinzel", serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(0.745 0.018 75);
+    transition: color 0.2s ease;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: oklch(0.76 0.1 70);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: oklch(0.76 0.1 70);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .section-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.76 0.1 70),
+      transparent
+    );
+    margin: 0 auto;
+  }
+
+  .achievement-icon-placeholder {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid oklch(0.76 0.1 70 / 0.3);
+  }
+
+  /* Hero scroll chevron bounce */
+  @keyframes chevron-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(8px);
+      opacity: 1;
+    }
+  }
+
+  .bounce-chevron {
+    animation: chevron-bounce 1.8s ease-in-out infinite;
+  }
+
+  /* Staggered hero entrance keyframes */
+  @keyframes hero-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-anim {
+    opacity: 0;
+    animation: hero-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .hero-anim-1 {
+    animation-delay: 0.1s;
+  }
+  .hero-anim-2 {
+    animation-delay: 0.35s;
+  }
+  .hero-anim-3 {
+    animation-delay: 0.6s;
+  }
+  .hero-anim-4 {
+    animation-delay: 0.8s;
+  }
+  .hero-anim-5 {
+    animation-delay: 1.05s;
+  }
+  .hero-anim-6 {
+    animation-delay: 1.25s;
+  }
+}
